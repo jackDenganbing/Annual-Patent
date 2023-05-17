@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.web.mapper.AnnualPatentPlanMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.web.com.example.web.vo.AnnualPatentPlan">
+            <id property="id" column="id" jdbcType="BIGINT"/>
+            <result property="programNo" column="program_no" jdbcType="VARCHAR"/>
+            <result property="applyNo" column="apply_no" jdbcType="VARCHAR"/>
+            <result property="applyDate" column="apply_date" jdbcType="TIMESTAMP"/>
+            <result property="patentName" column="patent_name" jdbcType="VARCHAR"/>
+            <result property="applyPerson" column="apply_person" jdbcType="VARCHAR"/>
+            <result property="inventionPerson" column="invention_person" jdbcType="VARCHAR"/>
+            <result property="proxyPerson" column="proxy_person" jdbcType="VARCHAR"/>
+            <result property="isFeereduction" column="is_feereduction" jdbcType="VARCHAR"/>
+            <result property="authorizationNo" column="authorization_no" jdbcType="VARCHAR"/>
+            <result property="authorizationDate" column="authorization_date" jdbcType="TIMESTAMP"/>
+            <result property="certificateNo" column="certificate_no" jdbcType="VARCHAR"/>
+            <result property="certificateYear" column="certificate_year" jdbcType="VARCHAR"/>
+            <result property="lawStatus" column="law_status" jdbcType="VARCHAR"/>
+            <result property="reply" column="reply" jdbcType="VARCHAR"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="replyFinal" column="reply_final" jdbcType="VARCHAR"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,program_no,apply_no,
+        apply_date,patent_name,apply_person,
+        invention_person,proxy_person,is_feereduction,
+        authorization_no,authorization_date,certificate_no,
+        certificate_year,law_status,reply,
+        remark,reply_final,is_deleted
+    </sql>
+    <select id="getList" resultType="com.example.web.com.example.web.vo.AnnualPatentPlan">
+
+        select
+        <include refid="Base_Column_List" />
+        from annual_patent_plan
+        where is_deleted != 1
+
+    </select>
+</mapper>
